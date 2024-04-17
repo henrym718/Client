@@ -1,3 +1,5 @@
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 import {
   Form,
   Input,
@@ -11,10 +13,10 @@ import { useNavigate } from "react-router-dom";
 import GigFromTag from "./GigFromTag";
 import { useState } from "react";
 import newGigService from "../service/newGigService";
-const { TextArea } = Input;
 
 export default function GigForm() {
   const [error, setError] = useState(null);
+  const [value, setValue] = useState();
   const [inputs, setInputs] = useState({
     title: "",
     aboutGig: "",
@@ -58,7 +60,8 @@ export default function GigForm() {
 
   const sendData = async () => {
     try {
-      const response = await newGigService.createGig(inputs);
+      const inputstoSend = { ...inputs, aboutGig: value };
+      const response = await newGigService.createGig(inputstoSend);
       console.log(response);
       navigate("/");
     } catch (error) {
@@ -79,17 +82,13 @@ export default function GigForm() {
             type='text'
           />
         </Form.Item>
-
         <span className='font-semibold text-base custom-span'>Descripcion</span>
-        <Form.Item className='mt-2 mb-10'>
-          <TextArea
-            name='aboutGig'
-            onChange={handleStateInputs}
-            rows={6}
-            maxLength={1500}
-          />
-        </Form.Item>
-
+        <ReactQuill
+          className='h-[250px] mb-16 mt-2'
+          theme='snow'
+          value={value}
+          onChange={setValue}
+        />
         <span className='font-semibold text-base custom-span'>
           Sector del servicio
         </span>
@@ -146,7 +145,6 @@ export default function GigForm() {
             <Button size='large'> Imagen de portada</Button>
           </Upload>
         </Form.Item>
-
         <Button
           onClick={sendData}
           className='w-full '
