@@ -6,6 +6,7 @@ import Home from "./../features/home";
 import NewGig from "./../features/createGig";
 import Auth from "./../features/auth";
 import ListGigsView from "../features/listGig";
+import DetailGig from "../features/detailGig";
 
 export const routes = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ export const routes = createBrowserRouter([
       {
         path: "/gigs",
         element: <ListGigsView />,
+      },
+      {
+        path: "/:author/:title",
+        element: <DetailGig />,
       },
     ],
   },
