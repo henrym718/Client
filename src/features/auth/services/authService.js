@@ -1,4 +1,4 @@
-import axiosUnauthenticated from "../../../interceptors/axiosUnauthenticated"
+import axiosUnauthenticated from "../../../api/axiosUnauthenticated"
 
 class AuthService {
     async isAuhenticated(email) {

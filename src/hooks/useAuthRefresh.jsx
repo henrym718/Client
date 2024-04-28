@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useUserStore } from "../store/userStore";
 import { getRefreshToken } from "../services/getRefreshToken";
-import axiosAuthenticated from "../interceptors/axiosAuthenticated";
+import axiosAuthenticated from "../api/axiosAuthenticated";
 
 const useAuthRefresh = () => {
   const getUserByCookieApi = useUserStore((state) => state.getUserByCookieApi);

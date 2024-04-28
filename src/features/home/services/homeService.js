@@ -1,4 +1,4 @@
-import axiosUnauthenticated from "../../../interceptors/axiosUnauthenticated.js"
+import axiosUnauthenticated from "../../../api/axiosUnauthenticated.js"
 
 class HomeService {
     async getOptionesSearch(query) {

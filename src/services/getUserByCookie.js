@@ -1,4 +1,4 @@
-import axiosUnauthenticated from "../interceptors/axiosUnauthenticated"
+import axiosUnauthenticated from "../api/axiosUnauthenticated"
 
 export const getUserByCookie = async () => {
     const { data } = await axiosUnauthenticated.get("/user/getuserbycookie")

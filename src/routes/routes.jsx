@@ -1,10 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
-import Home from "../pages/home/Home";
-import Layout from "../pages/layout/Layout";
-import Profile from "../pages/profile/Profile";
-import GigForm from "../pages/newGig/components/GigForm";
-import EmailValidateForm from "../pages/auth/components/EmailValidateForm";
-import Auth from "../pages/auth/auth";
+
+import Layout from "./../layouts";
+import Profile from "./../features/profile";
+import Home from "./../features/home";
+import NewGig from "./../features/createGig";
+import Auth from "./../features/auth";
+import ListGigsView from "../features/listGig";
 
 export const routes = createBrowserRouter([
   {
@@ -20,7 +21,11 @@ export const routes = createBrowserRouter([
       },
       {
         path: "/newGig",
-        element: <GigForm />,
+        element: <NewGig />,
+      },
+      {
+        path: "/gigs",
+        element: <ListGigsView />,
       },
     ],
   },

@@ -1,4 +1,4 @@
-import axiosAuthenticated from '../../../interceptors/axiosAuthenticated';
+import axiosAuthenticated from '../../../api/axiosAuthenticated';
 
 class profileServices {
 
