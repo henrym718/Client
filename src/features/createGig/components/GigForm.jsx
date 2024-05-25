@@ -9,6 +9,7 @@ import {
   InputNumber,
   Alert,
 } from "antd";
+import ImgCrop from "antd-img-crop";
 import { useNavigate } from "react-router-dom";
 import GigFromTag from "./GigFromTag";
 import { useState } from "react";
@@ -21,7 +22,7 @@ export default function GigForm() {
     title: "",
     aboutGig: "",
     category: "",
-    subcategory: "",
+    group: "",
     phone: "",
     price: 0,
     tags: [],
@@ -39,8 +40,8 @@ export default function GigForm() {
   };
 
   const handlestateCascader = (values) => {
-    const [category, subcategory] = values;
-    setInputs({ ...inputs, category, subcategory });
+    const [group, category] = values;
+    setInputs({ ...inputs, group, category });
   };
 
   const customRequest = async ({ file, onError, onSuccess }) => {
@@ -136,15 +137,19 @@ export default function GigForm() {
             max={5}
           />
         </Form.Item>
-        <Form.Item className='mt-2 mb-10'>
-          <Upload
-            maxCount={1}
-            accept='.jpge, .png'
-            customRequest={customRequest}
-          >
-            <Button size='large'> Imagen de portada</Button>
-          </Upload>
-        </Form.Item>
+        {/* <Form.Item className='mt-2 mb-10'> */}
+        <div className='mt-2 mb-10'>
+          <ImgCrop aspect={5 / 3} showGrid>
+            <Upload
+              maxCount={1}
+              accept='.jpge, .png'
+              customRequest={customRequest}
+            >
+              <Button size='large'> Imagen de portada</Button>
+            </Upload>
+          </ImgCrop>
+        </div>
+        {/* </Form.Item> */}
         <Button
           onClick={sendData}
           className='w-full '
